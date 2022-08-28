@@ -1,7 +1,7 @@
 {
     "name": "Ticket Decision Assistant",
     "description": "Helps ticket resellers work with their partners to determine whether or not they should buy a ticket.",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "manifest_version": 3,
     "host_permissions": [
         "*://checkout.ticketmaster.com/*", "*://*.ticketmaster.com/checkout/*", "*://checkout.livenation.com/*", "*://checkout.ticketmaster.ca/*", "*://*.ticketmaster.ca/checkout/*", "https://discord.com/*"
