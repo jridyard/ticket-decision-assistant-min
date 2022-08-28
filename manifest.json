@@ -1,0 +1,74 @@
+{
+    "name": "Ticket Decision Assistant",
+    "description": "Helps ticket resellers work with their partners to determine whether or not they should buy a ticket.",
+    "version": "1.1.2",
+    "manifest_version": 3,
+    "host_permissions": [
+        "*://checkout.ticketmaster.com/*", "*://*.ticketmaster.com/checkout/*", "*://checkout.livenation.com/*", "*://checkout.ticketmaster.ca/*", "*://*.ticketmaster.ca/checkout/*", "https://discord.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "run_at": "document_start"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://checkout.ticketmaster.com/*", "*://*.ticketmaster.com/checkout/*", "*://checkout.livenation.com/*", "*://checkout.ticketmaster.ca/*", "*://*.ticketmaster.ca/checkout/*"],
+        "js": [
+          "jquery.min.js",
+          "jquery-ui.min.js",
+          "main/all_files.js"
+        ],
+        "css": [
+        ],
+        "run_at": "document_start"
+      },
+      {
+        "matches": ["*://checkout.ticketmaster.com/*", "*://*.ticketmaster.com/checkout/*", "*://checkout.livenation.com/*", "*://checkout.ticketmaster.ca/*", "*://*.ticketmaster.ca/checkout/*", "https://discord.com/*"],
+        "js": [
+          "sweetalert.js"
+        ],
+        "css": [
+          "animate.min.css",
+          "sweetalert.css",
+          "three-dots.min.css"
+        ],
+        "all_frames": true
+      },
+      {
+        "matches": ["https://discord.com/*"],
+        "js": [
+          "jquery.min.js",
+          "jquery-ui.min.js",
+          "bindly.js",
+          "discord/discord.js"
+        ],
+        "css": [
+          "discord/discord.css",
+          "three-dots-white.min.css"
+        ],
+        "run_at": "document_start"
+      }
+  ],
+    "permissions": [
+      "storage",
+      "unlimitedStorage",
+      "tabs",
+      "activeTab"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [ "images/*", "collectDataFromWindowVars.js", "3dots.html" ],
+        "matches": [ "http://*/*","https://*/*","*://*/*" ]
+      }
+    ],
+    "incognito": "spanning",
+    "icons": {
+      "16": "./images/ticket-assistant-logo-png-32.png",
+      "32": "./images/ticket-assistant-logo-png-32.png",
+      "48": "./images/ticket-assistant-logo-png-32.png",
+      "128": "./images/ticket-assistant-logo-png-32.png"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
